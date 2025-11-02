@@ -177,29 +177,51 @@ const EventCard = ({ event }: { event: Event }) => {
     >
       <div className="flex flex-col md:flex-row h-full">
         {/* Date Section - Orange */}
-        <div className="p-4 flex flex-col items-center justify-center w-full md:w-36 flex-shrink-0 bg-gradient-to-b from-[#F57D3B] to-[#FF9A5A] relative">
-          <div className="text-4xl font-bold text-white">{event.date}</div>
-          <div className="text-xl text-white/90">{event.month}</div>
-          <div className="text-lg text-white/80">{event.year}</div>
-          <div className="absolute -right-3 top-1/2 transform -translate-y-1/2 w-0 h-0 border-t-[15px] border-t-transparent border-l-[18px] border-l-white border-b-[15px] border-b-transparent hidden md:block"></div>
+        <div className="p-3 sm:p-4 flex flex-row md:flex-col items-center justify-between md:justify-center w-full md:w-28 lg:w-36 flex-shrink-0 bg-gradient-to-b from-[#F57D3B] to-[#FF9A5A] relative">
+          <div className="flex md:flex-col items-center md:space-y-1">
+            <div className="text-3xl sm:text-4xl font-bold text-white">{event.date}</div>
+            <div className="text-lg sm:text-xl text-white/90 ml-2 md:ml-0">{event.month}</div>
+          </div>
+          <div className="text-base sm:text-lg text-white/80 hidden md:block">{event.year}</div>
+          <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 rotate-90 md:rotate-0 md:-right-3 md:top-1/2 md:translate-y-[-50%] w-0 h-0 border-t-[12px] md:border-t-[15px] border-t-transparent border-l-[15px] md:border-l-[18px] border-l-white border-b-[12px] md:border-b-[15px] border-b-transparent"></div>
         </div>
 
         {/* Event Details - White */}
-        <div className="p-5 flex-1 flex flex-col justify-between min-w-0 bg-white relative">
+        <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between min-w-0 bg-white relative">
           <div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">{event.title}</h3>
-            <div className="h-0.5 w-12 bg-gradient-to-r from-[#F57D3B] to-[#FF9A5A] mb-3 rounded-full"></div>
+            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">{event.title}</h3>
+            <div className="h-0.5 w-10 sm:w-12 bg-gradient-to-r from-[#F57D3B] to-[#FF9A5A] mb-3 rounded-full"></div>
             
             <div className="mb-3">
-              <h4 className="font-semibold text-gray-800 mb-1 text-base">Objective</h4>
-              <p className="text-gray-700 text-sm leading-relaxed">{event.objective}</p>
+              <h4 className="font-semibold text-gray-800 mb-1 text-sm sm:text-base">Objective</h4>
+              <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">{event.objective}</p>
             </div>
             
             <div className="relative">
-              <h4 className="font-semibold text-gray-800 mb-1 text-base">Summary</h4>
+              <div className="flex justify-between items-center">
+                <h4 className="font-semibold text-gray-800 text-sm sm:text-base">Summary</h4>
+                <button 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsExpanded(!isExpanded);
+                  }}
+                  className="md:hidden text-[#F57D3B] hover:text-[#e06d2b] text-xs font-medium flex items-center transition-colors"
+                >
+                  {isExpanded ? 'Show Less' : 'Read More'}
+                  <svg 
+                    className={`ml-1 w-3 h-3 transition-transform ${isExpanded ? 'rotate-180' : ''}`} 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
               <div 
-                className={`text-gray-700 text-sm leading-relaxed transition-all duration-300 overflow-hidden ${
-                  isExpanded ? 'max-h-[1000px]' : 'max-h-16'
+                className={`text-gray-700 text-xs sm:text-sm leading-relaxed transition-all duration-300 overflow-hidden ${
+                  isExpanded ? 'max-h-[1000px]' : 'max-h-16 md:max-h-[1000px]'
                 }`}
               >
                 {event.summary}
@@ -209,11 +231,11 @@ const EventCard = ({ event }: { event: Event }) => {
                   e.preventDefault();
                   setIsExpanded(!isExpanded);
                 }}
-                className="mt-1 text-[#F57D3B] hover:text-[#e06d2b] text-sm font-medium flex items-center group transition-colors"
+                className="hidden md:flex mt-1 text-[#F57D3B] hover:text-[#e06d2b] text-xs sm:text-sm font-medium items-center group transition-colors"
               >
                 {isExpanded ? 'Show Less' : 'Read More'}
                 <svg 
-                  className={`ml-1 w-3.5 h-3.5 transition-transform ${isExpanded ? 'rotate-180' : ''} group-hover:translate-x-0.5`} 
+                  className={`ml-1 w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform ${isExpanded ? 'rotate-180' : ''} group-hover:translate-x-0.5`} 
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24" 
@@ -226,17 +248,29 @@ const EventCard = ({ event }: { event: Event }) => {
           </div>
         </div>
 
-        {/* Event Image - Light Grey */}
-        <div className="relative w-full md:w-1/3 min-h-[200px] bg-gray-50 flex items-center justify-center p-4 border-l border-gray-100">
-          <div className="relative w-full h-full max-w-full max-h-full rounded overflow-hidden bg-white">
-            <Image
-              src={event.image}
-              alt={event.title}
-              fill
-              className="object-contain p-2"
-              sizes="(max-width: 768px) 100vw, 25vw"
-              priority={false}
-            />
+        {/* Event Image - Responsive sizing for all devices */}
+        <div className="relative w-full md:w-1/3 min-h-[220px] md:min-h-[300px] bg-gray-50 flex items-center justify-center p-3 sm:p-4 border-t md:border-t-0 md:border-l border-gray-100">
+          <div className="relative w-full h-full max-w-full rounded overflow-hidden bg-white flex items-center justify-center">
+            <div className="relative w-full h-full flex items-center justify-center p-2">
+              <Image
+                src={event.image}
+                alt={event.title}
+                width={400}
+                height={300}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-contain"
+                style={{
+                  maxHeight: '100%',
+                  maxWidth: '100%',
+                  height: 'auto',
+                  width: 'auto',
+                  objectFit: 'contain'
+                }}
+                priority={event.id <= 3} // Only load first 3 images eagerly
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNDAwIDMwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2Y1ZjVmNSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIGZpbGw9IiNjY2MiPkxvYWRpbmcuLi48L3RleHQ+PC9zdmc+"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -246,23 +280,23 @@ const EventCard = ({ event }: { event: Event }) => {
 
 export default function EventsPage() {
   return (
-    <div style={{ backgroundColor: '#F5EFE7', minHeight: '100vh' }}>
+    <div className="bg-[#F5EFE7] min-h-screen">
       <Navbar />
-      <main className="w-full pt-24 pb-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
-        <div className="mb-12 text-center">
-          <h2 className="text-4xl font-bold text-black mb-4">OUR PAST EVENTS</h2>
-          <div className="w-24 h-1 bg-orange-400 mx-auto rounded-full mb-8"></div>
-        </div>
+      <main className="w-full pt-20 md:pt-24 pb-12 px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Header Section */}
+          <div className="mb-8 sm:mb-12 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-3 sm:mb-4">OUR PAST EVENTS</h2>
+            <div className="w-16 sm:w-20 md:w-24 h-1 bg-orange-400 mx-auto rounded-full mb-6 sm:mb-8"></div>
+          </div>
 
-        {/* Events Grid */}
-        <div className="space-y-8 max-w-5xl mx-auto">
-          {events.map((event) => (
-            <EventCard key={event.id} event={event} />
-          ))}
+          {/* Events Grid */}
+          <div className="space-y-4 sm:space-y-6 md:space-y-8 max-w-5xl mx-auto">
+            {events.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
         </div>
-      </div>
       </main>
     </div>
   );

@@ -72,7 +72,7 @@ const Faculty = () => {
   ];
 
   return (
-    <div className="w-full py-20 px-4 sm:px-6 lg:px-8 bg-[#F5EFE7]">
+    <div id="faculty-section" className="w-full py-20 px-4 sm:px-6 lg:px-8 bg-[#F5EFE7]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
@@ -85,15 +85,15 @@ const Faculty = () => {
           {facultyMembers.map((faculty) => (
             <div 
               key={faculty.id} 
-              className="group relative bg-white rounded-2xl p-6 shadow-lg overflow-hidden h-full flex flex-col"
+              className="group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-full flex flex-col"
             >
               <div className="flex flex-col items-center text-center flex-grow">
-                <div className="relative w-32 h-40 mb-4">
+                <div className="relative w-48 h-60 mb-6 group-hover:scale-105 transition-transform duration-300">
                   <Image
                     src={faculty.image}
                     alt={faculty.name}
-                    width={128}
-                    height={160}
+                    width={192}
+                    height={240}
                     className="h-full w-full object-cover relative z-10 border-4 border-white"
                     style={{ aspectRatio: '3/4' }}
                   />

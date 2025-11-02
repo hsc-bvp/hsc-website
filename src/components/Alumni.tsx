@@ -54,7 +54,18 @@ const AlumniCard = ({ name, university, image, isCenter = false }: { name: strin
         fill
         className="object-cover transition-transform duration-500 group-hover:scale-110"
       />
-      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/80 transition-all duration-500 flex flex-col items-center justify-center p-4 text-center">
+      {/* Mobile: Always show info */}
+      <div className="md:hidden absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4">
+        <h3 className="text-lg font-bold text-[#f57d3b]">
+          {name}
+        </h3>
+        <p className="text-[#f57d3b] text-sm">
+          {university}
+        </p>
+      </div>
+      
+      {/* Desktop: Show on hover */}
+      <div className="hidden md:block absolute inset-0 bg-black/0 group-hover:bg-black/80 transition-all duration-500 flex flex-col items-center justify-center p-4 text-center">
         <h3 className="text-xl font-bold text-[#f57d3b] opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
           {name}
         </h3>

@@ -1,12 +1,23 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+  
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
   
   const isActive = (path: string) => {
     return pathname === path 
@@ -18,9 +29,9 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl mx-auto ${isHomePage ? 'backdrop-blur-xl' : 'backdrop-blur-md'}`}>
-      <div className={`${isHomePage ? 'bg-white/80' : 'bg-white/90'} rounded-2xl shadow-lg px-6 py-2 flex justify-between items-center border border-orange-100`}>
+      <div className={`${isHomePage ? 'bg-white/80' : 'bg-white/90'} rounded-2xl shadow-lg px-4 sm:px-6 py-2 flex justify-between items-center border border-orange-100`}>
         {/* Logo */}
-        <div className="relative h-14 w-36">
+        <div className="relative h-14 w-28 sm:w-36">
           <Link href="/">
             <Image 
               src="/logo_light-removebg.png" 
@@ -32,36 +43,91 @@ const Navbar = () => {
           </Link>
         </div>
         
-        {/* Navigation Links */}
-        <div className="flex items-center space-x-6">
-          <Link href="/" className={`${isActive('/')} text-sm font-medium px-3 py-2`}>
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button
+            onClick={toggleMenu}
+            className="text-gray-700 hover:text-[#f57d3b] p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f57d3b]"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
+        
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
+          <NavLink href="/" isActive={isActive('/')}>
             Home
-          </Link>
-          <Link href="/events" className={`${isActive('/events')} text-sm font-medium px-3 py-2`}>
+          </NavLink>
+          <NavLink href="/events" isActive={isActive('/events')}>
             Events
-          </Link>
-          <Link href="/alumni" className={`${isActive('/alumni')} text-sm font-medium px-3 py-2`}>
+          </NavLink>
+          <NavLink href="/alumni" isActive={isActive('/alumni')}>
             Alumni
-          </Link>
-          <Link href="/resources" className={`${isActive('/resources')} text-sm font-medium px-3 py-2`}>
+          </NavLink>
+          <NavLink href="/resources" isActive={isActive('/resources')}>
             Resources
-          </Link>
-          <Link href="/archive" className={`${isActive('/archive')} text-sm font-medium px-3 py-2`}>
+          </NavLink>
+          <NavLink href="/archive" isActive={isActive('/archive')}>
             Archive
-          </Link>
+          </NavLink>
           <a 
             href="https://www.bvcoend.ac.in/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="group flex items-center gap-1.5 bg-[#f57d3b] hover:bg-[#e66a22] text-white text-sm font-semibold pl-5 pr-4 py-2.5 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
+            className="group flex items-center gap-1.5 bg-[#f57d3b] hover:bg-[#e66a22] text-white text-sm font-semibold pl-4 pr-3 py-2 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
           >
             College Website
-            <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+      
+      {/* Mobile Menu */}
+      <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} ${isHomePage ? 'bg-white/80' : 'bg-white/90'} rounded-b-2xl shadow-lg mt-1 border border-t-0 border-orange-100`}>
+        <div className="px-4 py-2 space-y-1">
+          <MobileNavLink href="/" isActive={isActive('/')}>
+            Home
+          </MobileNavLink>
+          <MobileNavLink href="/events" isActive={isActive('/events')}>
+            Events
+          </MobileNavLink>
+          <MobileNavLink href="/alumni" isActive={isActive('/alumni')}>
+            Alumni
+          </MobileNavLink>
+          <MobileNavLink href="/resources" isActive={isActive('/resources')}>
+            Resources
+          </MobileNavLink>
+          <MobileNavLink href="/archive" isActive={isActive('/archive')}>
+            Archive
+          </MobileNavLink>
+          <a 
+            href="https://www.bvcoend.ac.in/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-1.5 bg-[#f57d3b] hover:bg-[#e66a22] text-white text-sm font-semibold px-4 py-2.5 rounded-lg transition-colors duration-200 w-full mt-2 mb-2"
+          >
+            College Website
+            <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
         </div>
       </div>
     </nav>
   );
-}
+};
+
+// NavLink Component
+const NavLink = ({ href, isActive, children }: { href: string, isActive: string, children: React.ReactNode }) => (
+  <Link href={href} className={`${isActive} text-sm font-medium px-2 py-2 sm:px-3`}>
+    {children}
+  </Link>
+);
+
+// MobileNavLink Component
+const MobileNavLink = ({ href, isActive, children }: { href: string, isActive: string, children: React.ReactNode }) => (
+  <Link href={href} className={`${isActive} block px-4 py-2.5 text-sm font-medium rounded-lg hover:bg-orange-50`}>
+    {children}
+  </Link>
+);
 
 export default Navbar;

@@ -1,6 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import Navbar from './Navbar';
-import { ArrowRight } from 'lucide-react'; 
+import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -36,7 +38,7 @@ export default function Hero() {
                  The background position is handled by `background-position: center`.
           */}
           <h1
-            className="font-oswald animate-fade-in-up bg-cover bg-clip-text text-right text-9xl font-black uppercase tracking-tight text-transparent leading-[0.9] lg:text-[11rem]"
+            className="font-oswald animate-fade-in-up bg-cover bg-clip-text text-right text-[5rem] font-black uppercase tracking-tight text-transparent leading-[0.9] xs:text-7xl sm:text-8xl md:text-8xl lg:text-8xl xl:text-[10rem]"
             style={{
               backgroundImage: 'url(/hero-bg1.png)',
               backgroundPosition: 'center', // Center the background image within the text
@@ -60,7 +62,17 @@ export default function Hero() {
             className="animate-fade-in-up mt-10 flex justify-end"
             style={{ animationDelay: '0.6s' }}
           >
-            <button className="group flex items-center gap-2 rounded-full bg-[#f57d3b] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:bg-[#e66a22] hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#f57d3b]/50">
+            <button 
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.scrollTo({
+                    top: window.innerHeight * 0.9,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
+              className="group flex items-center gap-2 rounded-full bg-[#f57d3b] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:bg-[#e66a22] hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#f57d3b]/50"
+            >
               Explore
               <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
