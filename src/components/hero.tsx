@@ -7,11 +7,10 @@ import { ArrowRight } from 'lucide-react';
 export default function Hero() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
+      {/* Navbar */}
       <Navbar />
 
       {/* Background Image & Overlay */}
-      {/* This main background is now *only* for the right side and general page fallback.
-          The left side's masked text will get its background directly. */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/hero-bg1.png"
@@ -24,50 +23,49 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/60" />
       </div>
 
+      {/* Beige overlay — full width on mobile, 50% on desktop */}
+      <div className="absolute left-0 top-0 h-full w-full md:w-[50.2%] md:-translate-x-[0.1%] bg-[#F5EFE7] z-[1]" />
+
       {/* Content Layer */}
-      <div className="relative z-10 flex h-screen w-full">
+      <div className="relative z-10 flex min-h-screen w-full flex-col justify-center md:justify-start md:flex-row max-w-[1600px] mx-auto overflow-hidden">
+        
         {/* Left Half: Content Area */}
-        <div className="flex w-full flex-col justify-center bg-[#F5EFE7] px-8 md:w-1/2 md:px-16 lg:px-24">
+        <div className="flex w-full md:w-1/2 flex-col justify-center px-8 sm:px-12 md:px-16 lg:px-24 
+                        py-12 sm:py-16 md:py-0 items-center md:items-end text-center md:text-right">
 
           {/* Headline */}
-          {/* CHANGES:
-              1. Increased font sizes further: `text-9xl` for mobile, `lg:text-[12rem]` for large screens.
-              2. Modified `backgroundImage` to directly include the black filter effect via `filter: brightness(0.6)`
-                 This ensures the image shown through the text is also darkened, matching the right side.
-              3. Removed `bg-fixed` as it's no longer necessary with the direct background image on the text itself.
-                 The background position is handled by `background-position: center`.
-          */}
           <h1
-            className="font-oswald animate-fade-in-up bg-cover bg-clip-text text-right text-[5rem] font-black uppercase tracking-tight text-transparent leading-[0.9] xs:text-7xl sm:text-8xl md:text-8xl lg:text-8xl xl:text-[10rem]"
+            className="font-oswald animate-fade-in-up bg-cover bg-clip-text text-transparent font-black uppercase tracking-tight leading-[0.9]"
             style={{
               backgroundImage: 'url(/hero-bg1.png)',
-              backgroundPosition: 'center', // Center the background image within the text
-              filter: 'brightness(0.6)', // Apply the darkening filter directly to the text background
+              backgroundPosition: 'center',
+              filter: 'brightness(0.6)',
               animationDelay: '0.2s',
+              fontSize: 'clamp(3rem, 9vw, 10rem)',
             }}
           >
             Higher <br /> Study <br /> Cell
           </h1>
 
           {/* Subtitle */}
-          <p 
-            className="font-inter animate-fade-in-up self-end mt-8 max-w-2xl text-right text-xl font-normal text-slate-700 md:text-2xl"
+          <p
+            className="font-inter animate-fade-in-up mt-6 text-lg sm:text-xl md:text-2xl text-slate-700 max-w-2xl"
             style={{ animationDelay: '0.4s' }}
           >
             Bharati Vidyapeeth&apos;s College of Engineering, New Delhi
           </p>
-          
-          {/* Call-to-Action (CTA) Button */}
-          <div 
-            className="animate-fade-in-up mt-10 flex justify-end"
+
+          {/* CTA Button */}
+          <div
+            className="animate-fade-in-up mt-10 flex justify-center md:justify-end"
             style={{ animationDelay: '0.6s' }}
           >
-            <button 
+            <button
               onClick={() => {
                 if (typeof window !== 'undefined') {
                   window.scrollTo({
                     top: window.innerHeight * 0.9,
-                    behavior: 'smooth'
+                    behavior: 'smooth',
                   });
                 }
               }}
@@ -79,8 +77,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Half (Visual space on larger screens) */}
-        <div className="hidden w-1/2 md:block" />
+        {/* Right Half: Image space on desktop */}
+        <div className="hidden md:block w-1/2" />
       </div>
     </div>
   );

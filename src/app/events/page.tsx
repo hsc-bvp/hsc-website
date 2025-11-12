@@ -18,6 +18,26 @@ type Event = {
 const events: Event[] = [
   {
     id: 1,
+    title: 'Seminar: Career Counselling - Preparation for UPSC Exams',
+    objective: 'Guide students through effective UPSC preparation strategies, covering exam structure, study plans, and answer writing techniques.',
+    summary: 'Expert-led session on UPSC exam preparation, including syllabus analysis, optional subject selection, and time management. Features success stories and Q&A with previous qualifiers.',
+    image: '/assets/images/4nov2025.jpg',
+    date: '04',
+    month: 'NOV',
+    year: '2025'
+  },
+  {
+    id: 2,
+    title: 'Seminar: Roadmap to Higher Studies in USA',
+    objective: 'Seminar focused on the importance of pursuing higher studies in the USA. Covered key aspects: eligibility criteria, application deadlines, and required documents.',
+    summary: 'The seminar provided a roadmap to higher studies in the USA, including information on visa requirements, application processes, and scholarship opportunities.',
+    image: '/assets/images/30oct2025.jpg',
+    date: '30',
+    month: 'OCT',
+    year: '2025'
+  },
+  {
+    id: 3,
     title: 'Seminar: HOW TO PLAN MASTERS ABROAD',
     objective: 'Seminar focused on the importance of pursuing a master\'s degree abroad. Covered key aspects: eligibility criteria, application deadlines, and required documents. The Visa requirements and the application process was discussed.',
     summary: 'The seminar led by Mr. Rohit Bagla on How to Plan Masters Abroad aimed to guide students through the essential steps of pursuing a master\'s degree overseas. It covered key topics such as selecting the right country and university, understanding eligibility criteria, application processes, and scholarship options. The session also provided insights on visa requirements, post-study work opportunities, and how studying abroad can contribute to both personal and professional growth.',
@@ -183,7 +203,7 @@ const EventCard = ({ event }: { event: Event }) => {
             <div className="text-lg sm:text-xl text-white/90 ml-2 md:ml-0">{event.month}</div>
           </div>
           <div className="text-base sm:text-lg text-white/80 hidden md:block">{event.year}</div>
-          <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 rotate-90 md:rotate-0 md:-right-3 md:top-1/2 md:translate-y-[-50%] w-0 h-0 border-t-[12px] md:border-t-[15px] border-t-transparent border-l-[15px] md:border-l-[18px] border-l-white border-b-[12px] md:border-b-[15px] border-b-transparent"></div>
+          <div className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[15px] border-t-transparent border-l-[18px] border-l-white border-b-[15px] border-b-transparent"></div>
         </div>
 
         {/* Event Details - White */}

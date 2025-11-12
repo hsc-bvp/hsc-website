@@ -19,22 +19,22 @@ type Event = {
 const events: Event[] = [
   {
     id: 1,
-    title: 'Seminar: HOW TO PLAN MASTERS ABROAD',
-    objective: 'Seminar focused on the importance of pursuing a master\'s degree abroad. Covered key aspects: eligibility criteria, application deadlines, and required documents. The Visa requirements and the application process was discussed.',
-    summary: 'The seminar led by Mr. Rohit Bagla on How to Plan Masters Abroad aimed to guide students through the essential steps of pursuing a master\'s degree overseas. It covered key topics such as selecting the right country and university, understanding eligibility criteria, application processes, and scholarship options. The session also provided insights on visa requirements, post-study work opportunities, and how studying abroad can contribute to both personal and professional growth.',
-    image: '/assets/images/PlanMastersAbroad20thFeb2025.jpg',
-    date: '20',
-    month: 'FEB',
+    title: 'Seminar: Career Counselling - Preparation for UPSC Exams',
+    objective: 'Guide students through effective UPSC preparation strategies, covering exam structure, study plans, and answer writing techniques.',
+    summary: 'Expert-led session on UPSC exam preparation, including syllabus analysis, optional subject selection, and time management. Features success stories and Q&A with previous qualifiers.',
+    image: '/assets/images/4nov2025.jpg',
+    date: '04',
+    month: 'NOV',
     year: '2025'
   },
   {
     id: 2,
-    title: 'Seminar: EMERGING TRENDS IN MANAGEMENT CAREERS',
-    objective: 'Seminar focused on guiding students to pursue a management career after B.Tech. Covered key aspects: why, when, what, and where to pursue an MBA.',
-    summary: 'Mr. Ramessh Mishra led the seminar which aimed to guide students on pursuing a management career after B.Tech, covering key aspects such as why, when, what, and where to pursue an MBA. The session provided valuable insights into career prospects, salary growth, and the significance of choosing the right business school.',
-    image: '/assets/images/EmergingTrends3rdFeb2025.jpg',
-    date: '03',
-    month: 'FEB',
+    title: 'Seminar: Roadmap to Higher Studies in USA',
+    objective: 'Seminar focused on the importance of pursuing higher studies in the USA. Covered key aspects: eligibility criteria, application deadlines, and required documents.',
+    summary: 'The seminar provided a roadmap to higher studies in the USA, including information on visa requirements, application processes, and scholarship opportunities.',
+    image: '/assets/images/30oct2025.jpg',
+    date: '30',
+    month: 'OCT',
     year: '2025'
   }
 ];
@@ -64,7 +64,7 @@ const Events = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-orange-100 to-orange-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
               
               <div className="relative z-10">
-                <div className="h-64 relative">
+                <div className="h-72 md:h-80 relative">
                   <Image
                     src={events[0].image}
                     alt={events[0].title}
@@ -78,11 +78,11 @@ const Events = () => {
                     <div className="text-xs">{events[0].year}</div>
                   </div>
                 </div>
-                <div className="p-6">
+                <div className="p-6 flex flex-col h-[calc(100%-18rem)] md:h-[calc(100%-20rem)]">
                   <h3 className="text-xl font-bold text-black mb-3 group-hover:text-gray-800 transition-colors">
                     {events[0].title}
                   </h3>
-                  <p className="text-gray-700 mb-4 line-clamp-3 group-hover:text-gray-800 transition-colors">
+                  <p className="text-gray-700 mb-4 line-clamp-4 group-hover:text-gray-800 transition-colors flex-grow">
                     {events[0].objective}
                   </p>
                   <div className="flex justify-between items-center pt-3 border-t border-gray-100 group-hover:border-orange-200">
@@ -108,7 +108,7 @@ const Events = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-orange-100 to-orange-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
               
               <div className="relative z-10">
-                <div className="h-64 relative">
+                <div className="h-72 md:h-80 relative">
                   <Image
                     src={events[1].image}
                     alt={events[1].title}
@@ -122,11 +122,11 @@ const Events = () => {
                     <div className="text-xs">{events[1].year}</div>
                   </div>
                 </div>
-                <div className="p-6">
+                <div className="p-6 flex flex-col h-[calc(100%-18rem)] md:h-[calc(100%-20rem)]">
                   <h3 className="text-xl font-bold text-black mb-3 group-hover:text-gray-800 transition-colors">
                     {events[1].title}
                   </h3>
-                  <p className="text-gray-700 mb-4 line-clamp-3 group-hover:text-gray-800 transition-colors">
+                  <p className="text-gray-700 mb-4 line-clamp-4 group-hover:text-gray-800 transition-colors flex-grow">
                     {events[1].objective}
                   </p>
                   <div className="flex justify-between items-center pt-3 border-t border-gray-100 group-hover:border-orange-200">
