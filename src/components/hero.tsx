@@ -41,8 +41,9 @@ export default function Hero() {
               backgroundPosition: 'center',
               filter: 'brightness(0.6)',
               animationDelay: '0.2s',
-              fontSize: 'clamp(2.5rem, 7vw, 7rem)',
-              margin: '2rem 0 1rem 0',
+              fontSize: 'clamp(4.5rem, 12vw, 7rem)',
+              lineHeight: '1.1',
+              margin: '1.5rem 0 0.75rem 0',
             }}
           >
             Higher <br /> Study <br /> Cell
@@ -50,7 +51,7 @@ export default function Hero() {
 
           {/* Subtitle */}
           <p
-            className="font-inter animate-fade-in-up mt-6 text-lg sm:text-xl md:text-2xl text-slate-700 max-w-2xl"
+            className="font-inter animate-fade-in-up mt-4 text-base sm:text-lg md:text-xl text-slate-700 max-w-2xl"
             style={{ animationDelay: '0.4s' }}
           >
             Bharati Vidyapeeth&apos;s College of Engineering, New Delhi
@@ -58,7 +59,7 @@ export default function Hero() {
 
           {/* CTA Button */}
           <div
-            className="animate-fade-in-up mt-10 flex justify-center md:justify-end"
+            className="animate-fade-in-up mt-8 flex justify-center md:justify-end"
             style={{ animationDelay: '0.6s' }}
           >
             <button
@@ -70,10 +71,10 @@ export default function Hero() {
                   });
                 }
               }}
-              className="group flex items-center gap-2 rounded-full bg-[#f57d3b] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:bg-[#e66a22] hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#f57d3b]/50"
+              className="group flex items-center gap-2 rounded-full bg-[#f57d3b] px-6 py-3 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:bg-[#e66a22] hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#f57d3b]/50"
             >
               Explore
-              <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
           </div>
         </div>

@@ -49,7 +49,7 @@ const Navbar = () => {
   const isHomePage = pathname === '/';
 
   return (
-    <nav className={`fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl mx-auto ${isHomePage ? 'backdrop-blur-xl' : 'backdrop-blur-md'}`}>
+    <nav className={`fixed top-1 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl mx-auto ${isHomePage ? 'backdrop-blur-xl' : 'backdrop-blur-md'}`}>
       <div className={`${isHomePage ? 'bg-white/80' : 'bg-white/90'} rounded-xl shadow-lg px-3 sm:px-5 py-1.5 flex justify-between items-center border border-orange-100`}>
         {/* Logo */}
         <div className="relative h-12 w-24 sm:w-32">

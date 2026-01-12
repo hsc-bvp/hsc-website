@@ -14,12 +14,12 @@ const resources = [
       {
         label: 'Competitive Exams - Within India',
         description: 'Competitive Exams for further studies in India',
-        content: '#EXAMURL1\nUPSC\nhttps://www.upsc.gov.in/\n2\nSSC\nhttps://ssc.nic.in/\n3\nCAT\nhttps://iimcat.ac.in\n4\nGATE\nhttps://gate.iitkgp.ac.in/'
+        content: '1. UPSC - https://www.upsc.gov.in/\n2. SSC - https://ssc.nic.in/\n3. CAT - https://iimcat.ac.in\n4. GATE - https://gate.iitkgp.ac.in/'
       },
       {
         label: 'Competitive Exams - Abroad',
         description: 'Competitive Exams and English Language Proficiency Exams for further studies abroad.',
-        content: '#EXAMURL1\nGRE\nhttps://www.ets.org/gre\n2\nGMAT\nhttps://www.mba.com/exams/gmat\n3\nILETS\nhttps://www.ielts.org/\n4\nTOEFL\nhttps://www.ets.org/toefl'
+        content: '1. GRE - https://www.ets.org/gre\n2. GMAT - https://www.mba.com/exams/gmat\n3. IELTS - https://www.ielts.org/\n4. TOEFL - https://www.ets.org/toefl'
       }
     ]
   },
@@ -38,16 +38,25 @@ If you're considering applying for an MS program abroad, here are some of the to
   },
   {
     title: 'STUDENT SUCCESS STORIES',
-    description: 'Showcase of our alumni currently pursuing masters at prestigious universities across the globe. Learn about their journeys and achievements.',
-    content: `STUDENT SUCCESS STORIES
+    description: 'Our alumni have gone on to study at prestigious institutions worldwide. Here are some of their achievements.',
+    content: `NOTABLE ALUMNI ACHIEVEMENTS
 
-Read inspiring stories from our alumni who are now pursuing their dreams at top universities around the world.
+We're proud to highlight some of our accomplished alumni who have been accepted to prestigious institutions:
 
-1. John Doe - MS in Computer Science at Stanford University
-2. Jane Smith - MS in Data Science at MIT
-3. Alex Johnson - MS in Mechanical Engineering at ETH Zurich
+• ANURAG THAPLIYAL - XIM University (2024-25)
+• ANEKANT MANTHAN - ICFAI Business School, Hyderabad (2024-25)
+• ANSH AGARWAL - IIM Indore (2024-25)
+• V. GAYATHRI - DTU (2024-25)
+• NITYA MATHUR - Carnegie Mellon University (2022-23)
+• GAURAV MANOCHA - University of Stuttgart, Germany (2021-22)
 
-Each of our students has a unique journey. Contact us to learn more about their experiences and how we helped them achieve their academic goals.`
+These students have demonstrated exceptional dedication and have been accepted to various top institutions including:
+• Indian Institutes of Management (IIMs)
+• Indian Institutes of Technology (IITs)
+• Delhi Technological University (DTU)
+• XIM University
+• And other renowned institutions globally
+`
   },
   {
     title: 'STATEMENT OF PURPOSE GUIDE',
@@ -94,50 +103,30 @@ Tips:
   },
   {
     title: 'LETTER OF RECOMMENDATION',
-    description: 'Essential guidelines for obtaining strong recommendation letters. Includes tips for both students and recommenders to create impactful academic endorsements.',
-    content: `LETTER OF RECOMMENDATION GUIDE
+    description: 'Comprehensive resources for writing and requesting effective letters of recommendation. Includes templates, samples, and expert tips.',
+    content: `LETTER OF RECOMMENDATION RESOURCES
 
-A strong Letter of Recommendation (LOR) can significantly enhance your graduate school application. Here's what you need to know:
+1. TEMPLATE LAB
+   Professional LOR templates and examples
+   https://templatelab.com/letter-of-recommendation/
 
-1. WHO TO ASK
-   - Professors who know you well
-   - Research supervisors
-   - Work supervisors (if relevant)
-   - Someone who can speak to your abilities
+2. E-FORMS
+   Free LOR templates and writing guides
+   https://eforms.com/recommendation-letter/
 
-2. WHEN TO ASK
-   - At least 2-3 months before deadline
-   - During office hours or scheduled meeting
-   - Not during busy periods (exams, end of term)
+3. ADMIT KARD
+   LOR samples for MS applications
+   https://www.admitkard.com/blog/2018/01/15/lor-sample-for-ms/
 
-3. HOW TO ASK
-   - Ask in person if possible
-   - Be polite and professional
-   - Provide necessary information
-   - Follow up if needed
+4. RESUME GENIUS
+   How to write a strong LOR with examples
+   https://resumegenius.com/letter-of-recommendation
 
-4. WHAT TO PROVIDE
-   - Your CV/resume
-   - Transcripts
-   - Statement of Purpose
-   - List of programs and deadlines
-   - Specific points to highlight
-
-5. SAMPLE EMAIL REQUEST
-   Subject: Letter of Recommendation Request for [Your Name]
-   
-   Dear [Professor's Name],
-   
-   I hope this message finds you well. I am applying to [program name] at [university name] and would be honored if you could write me a strong letter of recommendation.
-   
-   [Briefly remind them of your work together]
-   
-   The deadline is [date]. Please let me know if you need any additional information.
-   
-   Thank you for your time and consideration.
-   
-   Best regards,
-   [Your Name]`
+TIPS FOR REQUESTING LORS:
+- Ask at least 4-6 weeks before deadlines
+- Provide your CV and statement of purpose
+- Share specific achievements you'd like highlighted
+- Follow up with a thank you note`
   },
 ];
 
