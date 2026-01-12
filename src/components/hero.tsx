@@ -35,13 +35,12 @@ export default function Hero() {
 
           {/* Headline */}
           <h1
-            className="font-oswald animate-fade-in-up bg-cover bg-clip-text text-transparent font-black uppercase tracking-tight leading-[1]"
+            className="font-oswald animate-fade-in-up bg-cover bg-clip-text text-transparent font-black uppercase tracking-tight leading-[1] text-5xl md:text-6xl lg:text-7xl"
             style={{
               backgroundImage: 'url(/hero-bg1.png)',
               backgroundPosition: 'center',
               filter: 'brightness(0.6)',
               animationDelay: '0.2s',
-              fontSize: 'clamp(4.5rem, 12vw, 7rem)',
               lineHeight: '1.1',
               margin: '1.5rem 0 0.75rem 0',
             }}
