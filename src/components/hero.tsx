@@ -35,13 +35,14 @@ export default function Hero() {
 
           {/* Headline */}
           <h1
-            className="font-oswald animate-fade-in-up bg-cover bg-clip-text text-transparent font-black uppercase tracking-tight leading-[0.9]"
+            className="font-oswald animate-fade-in-up bg-cover bg-clip-text text-transparent font-black uppercase tracking-tight leading-[1]"
             style={{
               backgroundImage: 'url(/hero-bg1.png)',
               backgroundPosition: 'center',
               filter: 'brightness(0.6)',
               animationDelay: '0.2s',
-              fontSize: 'clamp(3rem, 9vw, 10rem)',
+              fontSize: 'clamp(2.5rem, 7vw, 7rem)',
+              margin: '2rem 0 1rem 0',
             }}
           >
             Higher <br /> Study <br /> Cell

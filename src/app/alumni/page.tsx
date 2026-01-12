@@ -105,7 +105,6 @@ const alumniData = [
 
 
 const AlumniCard = ({ alumni, index }: { alumni: typeof alumniData[0], index: number }) => {
-
   return (
     <div className="relative bg-white rounded-lg overflow-hidden flex shadow-sm transition-all duration-200 hover:shadow-md max-w-5xl mx-auto my-1.5 w-full min-h-[4.5rem] md:h-18">
       {/* Number Section - Orange */}
@@ -127,7 +126,7 @@ const AlumniCard = ({ alumni, index }: { alumni: typeof alumniData[0], index: nu
             </p>
             {/* Year badge for mobile */}
             <div className="md:hidden mt-1">
-              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-orange-100 text-orange-800">
+              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-orange-100 text-orange-800 border border-orange-200">
                 {alumni.year}
               </span>
             </div>
@@ -142,7 +141,7 @@ const AlumniCard = ({ alumni, index }: { alumni: typeof alumniData[0], index: nu
           
           {/* Year - Hidden on mobile, shown on desktop */}
           <div className="hidden md:flex col-span-2 justify-end">
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 whitespace-nowrap">
+            <span className="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 whitespace-nowrap border border-orange-200">
               {alumni.year}
             </span>
           </div>
@@ -153,17 +152,13 @@ const AlumniCard = ({ alumni, index }: { alumni: typeof alumniData[0], index: nu
 };
 
 export default function AlumniPage() {
-  // Group alumni by year
-  const alumniByYear = alumniData.reduce((acc, alumni) => {
-    if (!acc[alumni.year]) {
-      acc[alumni.year] = [];
+  // Sort all alumni by year (newest first) and then by ID
+  const sortedAlumni = [...alumniData].sort((a, b) => {
+    if (b.year !== a.year) {
+      return b.year.localeCompare(a.year);
     }
-    acc[alumni.year].push(alumni);
-    return acc;
-  }, {} as Record<string, typeof alumniData>);
-
-  const years = Object.keys(alumniByYear).sort((a, b) => b.localeCompare(a));
-  const filteredYears = years;
+    return a.id - b.id;
+  });
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#F5EFE7' }}>
@@ -177,24 +172,13 @@ export default function AlumniPage() {
             <div className="w-24 h-1 bg-orange-400 mx-auto rounded-full mb-8"></div>
           </div>
           
-          <div className="space-y-8">
-            {filteredYears.map((year) => (
-              <div key={year} className="mb-10">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center justify-center">
-                  <span className="bg-orange-100 text-orange-700 px-6 py-2 rounded-full text-base font-medium">
-                    BATCH {year}
-                  </span>
-                </h2>
-                <div className="space-y-3">
-                  {alumniByYear[year].map((alumni, idx) => (
-                    <AlumniCard 
-                      key={alumni.id} 
-                      alumni={alumni} 
-                      index={idx} 
-                    />
-                  ))}
-                </div>
-              </div>
+          <div className="space-y-3">
+            {sortedAlumni.map((alumni, index) => (
+              <AlumniCard 
+                key={alumni.id} 
+                alumni={alumni} 
+                index={index} 
+              />
             ))}
           </div>
         </div>

@@ -8,11 +8,28 @@ import { ArrowUpRight, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeHash, setActiveHash] = useState('');
   const pathname = usePathname();
   
-  // Close mobile menu when route changes
+  // Handle hash changes and close mobile menu when route changes
   useEffect(() => {
     setIsOpen(false);
+    
+    // This will only run on the client side
+    const handleHashChange = () => {
+      setActiveHash(window.location.hash);
+    };
+    
+    // Set initial hash
+    handleHashChange();
+    
+    // Add event listener for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, [pathname]);
   
   const toggleMenu = () => {
@@ -24,14 +41,18 @@ const Navbar = () => {
       ? 'text-white bg-[#f57d3b] px-4 py-2 rounded-full' 
       : 'text-gray-700 hover:text-[#f57d3b] transition-colors';
   };
+  
+  const isTeamActive = pathname === '/' && activeHash === '#faculty' 
+    ? 'text-white bg-[#f57d3b] px-4 py-2 rounded-full' 
+    : 'text-gray-700 hover:text-[#f57d3b] transition-colors';
 
   const isHomePage = pathname === '/';
 
   return (
-    <nav className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl mx-auto ${isHomePage ? 'backdrop-blur-xl' : 'backdrop-blur-md'}`}>
-      <div className={`${isHomePage ? 'bg-white/80' : 'bg-white/90'} rounded-2xl shadow-lg px-4 sm:px-6 py-2 flex justify-between items-center border border-orange-100`}>
+    <nav className={`fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl mx-auto ${isHomePage ? 'backdrop-blur-xl' : 'backdrop-blur-md'}`}>
+      <div className={`${isHomePage ? 'bg-white/80' : 'bg-white/90'} rounded-xl shadow-lg px-3 sm:px-5 py-1.5 flex justify-between items-center border border-orange-100`}>
         {/* Logo */}
-        <div className="relative h-14 w-28 sm:w-36">
+        <div className="relative h-12 w-24 sm:w-32">
           <Link href="/">
             <Image 
               src="/logo_light-removebg.png" 
@@ -47,7 +68,7 @@ const Navbar = () => {
         <div className="md:hidden">
           <button
             onClick={toggleMenu}
-            className="text-gray-700 hover:text-[#f57d3b] p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f57d3b]"
+            className="text-gray-700 hover:text-[#f57d3b] p-1.5 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f57d3b]"
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -58,6 +79,9 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
           <NavLink href="/" isActive={isActive('/')}>
             Home
+          </NavLink>
+          <NavLink href="/#faculty" isActive={isTeamActive}>
+            Team
           </NavLink>
           <NavLink href="/events" isActive={isActive('/events')}>
             Events
@@ -88,6 +112,12 @@ const Navbar = () => {
         <div className="px-4 py-2 space-y-1">
           <MobileNavLink href="/" isActive={isActive('/')}>
             Home
+          </MobileNavLink>
+          <MobileNavLink 
+            href="/#faculty" 
+            isActive={pathname === '/' && activeHash === '#faculty' ? 'bg-gray-100 text-[#f57d3b]' : 'text-gray-700 hover:bg-gray-100 hover:text-[#f57d3b]'}
+          >
+            Team
           </MobileNavLink>
           <MobileNavLink href="/events" isActive={isActive('/events')}>
             Events
